@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Pappersfritt företag – Carl Stenborg Portfolio </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.pf { padding: 10px 30px 40px; line-height: 1.6; font-family: Arial, sans-serif; }
+.pf h1 { text-align: center; font-size: 40px; margin-bottom: 0; }
+.pf .ingress { text-align: center; font-size: 20px; margin-top: 8px; color: #333; }
+.pf h2 { color: #5F7A52; margin-top: 40px; }
+.pf video { display: block; margin: 20px auto; max-height: 640px; max-width: 100%;
+    border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.35); background: #000; }
+.pf .filmtext { text-align: center; color: #555; font-size: 14px; }
+.pf .bilder { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px; align-items: start; }
+.pf .bilder figure { margin: 0; }
+.pf .bilder img { width: 100%; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+.pf .bilder figcaption { font-size: 13px; color: #555; margin-top: 6px; }
+.pf .regler { background: #eef2eb; border-left: 5px solid #5F7A52; border-radius: 10px; padding: 10px 20px; }
+.pf .tillbaka { text-align: center; margin-top: 40px; }
+@media (max-width: 700px) { .pf .bilder { grid-template-columns: 1fr; } }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+
+<table width="890px">
+<tr>
+
+<td width="150px"><img src="ansikte.png" style="width: 150px; height:auto;">
+</td>
+<td class="heading" valign="bottom" align="left">Carl Stenborg </td>
+
+<div id="nav">
+
+<td class="nav" align="right" valign="bottom" height="150px">
+
+<a href="index.html"> Hem </a>
+<a href="Mitt_arbete.html"> Mitt Arbete </a>
+<a href="mig.html"> Om Mig </a>
+
+
+</td>
+</table>
+
+<hr>
+
+<div class="pf">
+
+<h1>Pappersfritt företag</h1>
+<p class="ingress">En digital sekreterare för små hantverkare på Åland. Inget faller mellan stolarna.</p>
+
+<video src="pappersfritt/film.webm" poster="pappersfritt/poster.png" controls muted playsinline preload="metadata"></video>
+<p class="filmtext">En animerad film på en minut som jag gjorde för att visa idén för hantverkare. Erik är påhittad.</p>
+
+<h2>Problemet</h2>
+<p>En snickare eller elektriker får förfrågningar via samtal, SMS, mejl och Facebook. Efter en lång
+arbetsdag ska allt sorteras, bokas och faktureras, och då glöms saker bort. Jag ringde runt till
+hantverkare på Åland för att höra hur det ser ut. Alla som svarade på frågorna hade glömt något den
+senaste månaden. En byggare sa att 60 % av hans tid går till kontorsarbete.</p>
+
+<h2>Vad systemet gör</h2>
+<p>Kunden fyller i ett formulär för att begära offert och får ett svar direkt. Hantverkaren bokar
+jobbet med en knapp i mobilen, och det hamnar i Google Kalender. Kvällen innan får kunden en
+påminnelse. När jobbet är klart fyller hantverkaren i timmar och material, och en färdig faktura
+skapas som PDF. Om kunden inte betalar i tid skickas en vänlig påminnelse.</p>
+<p>Allt körs i hantverkarens eget Google-konto, med Gmail, Kalender och Kalkylark som hen redan har.
+Det finns inget nytt program att lära sig, och hantverkaren äger sina egna data.</p>
+
+<div class="bilder">
+    <figure><img src="pappersfritt/formular.png" alt="Formuläret Begär offert i mobilen"><figcaption>Kunden begär offert</figcaption></figure>
+    <figure><img src="pappersfritt/kalender.png" alt="Ett bokat jobb i Google Kalender"><figcaption>Jobbet hamnar i kalendern</figcaption></figure>
+    <figure><img src="pappersfritt/jobb.png" alt="Fliken Jobb i Google Sheets med menyn Företaget"><figcaption>Alla jobb på ett ställe</figcaption></figure>
+    <figure><img src="pappersfritt/faktura.png" alt="En faktura som systemet skapat"><figcaption>Fakturan skapas automatiskt</figcaption></figure>
+</div>
+<p class="filmtext">Bilderna kommer från en klickbar demo och ett testföretag. Alla namn och nummer är påhittade.</p>
+
+<h2>Hur det är byggt</h2>
+<p>Systemet är skrivet i Google Apps Script, som körs gratis i Googles moln. Formulär, kalender, mejl
+och fakturamall kopplas ihop med kod som startar av sig själv när ett formulär skickas in, och
+varje kväll klockan sex. Det som skiljer två kunder åt, till exempel timpris och tjänster, ligger
+i kalkylarket och inte i koden.</p>
+<p>Jag har byggt det tillsammans med AI-verktyget Claude Code. Jag bestämmer vad som ska byggas,
+testar och styr. Claude Code skriver det mesta av koden.</p>
+
+<h2>Så har jag testat det</h2>
+<div class="regler">
+<p>Ett system som skickar mejl och fakturor till riktiga kunder får inte göra fel. Därför:</p>
+<ul>
+    <li><b>116 automatiska tester.</b> Jag byggde en låtsasversion av Google så att hela flödet kan
+    testas på några sekunder efter varje ändring.</li>
+    <li><b>Testläge.</b> När det är påslaget går alla mejl bara till mig, aldrig till kunder.</li>
+    <li><b>Ett slutprov på riktigt.</b> Hela kedjan från förfrågan till betald faktura kördes i ett
+    riktigt Google-konto. Tio fel hittades och rättades.</li>
+</ul>
+</div>
+
+<h2>Vad jag lärt mig</h2>
+<p>När jag pratade med hantverkarna visade det sig att de redan
+är digitala. Problemet är att allt är utspritt i olika appar och att saker glöms bort. Därför
+är budskapet att "Inget faller mellan stolarna". Jag har lärt mig att det lönar sig att
+fråga kunderna innan man bygger, och att ett system som andra ska lita på måste testas mycket.</p>
+
+<div class="tillbaka button">
+<a href="Mitt_arbete.html"> Tillbaka till Mitt Arbete </a>
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

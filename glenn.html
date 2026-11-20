@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Glenn – Carl Stenborg Portfolio </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.glenn { padding: 10px 30px 40px; line-height: 1.6; font-family: Arial, sans-serif; }
+.glenn h1 { text-align: center; font-size: 40px; margin-bottom: 0; }
+.glenn .ingress { text-align: center; font-size: 20px; margin-top: 8px; color: #333; }
+.glenn h2 { color: #5F7A52; margin-top: 40px; }
+.glenn video { display: block; margin: 20px auto; max-height: 640px; max-width: 100%;
+    border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.35); background: #000; }
+.glenn .filmtext { text-align: center; color: #555; font-size: 14px; }
+.glenn .bilder { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 20px; }
+.glenn .bilder figure { margin: 0; }
+.glenn .bilder img { width: 100%; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+.glenn .bilder figcaption { font-size: 13px; color: #555; margin-top: 6px; }
+.glenn .regler { background: #eef2eb; border-left: 5px solid #5F7A52; border-radius: 10px; padding: 10px 20px; }
+.glenn .tillbaka { text-align: center; margin-top: 40px; }
+@media (max-width: 700px) { .glenn .bilder { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+
+<body>
+
+<div id="container">
+
+<table width="890px">
+<tr>
+
+<td width="150px"><img src="ansikte.png" style="width: 150px; height:auto;">
+</td>
+<td class="heading" valign="bottom" align="left">Carl Stenborg </td>
+
+<div id="nav">
+
+<td class="nav" align="right" valign="bottom" height="150px">
+
+<a href="index.html"> Hem </a>
+<a href="Mitt_arbete.html"> Mitt Arbete </a>
+<a href="mig.html"> Om Mig </a>
+
+
+</td>
+</table>
+
+<hr>
+
+<div class="glenn">
+
+<h1>Glenn</h1>
+<p class="ingress">Min personliga AI-assistent. Den finns i mobilen och jobbar dygnet runt.</p>
+
+<video src="glenn/film.webm" poster="glenn/byn.jpg" controls muted playsinline preload="metadata"></video>
+<p class="filmtext">Filmen visar Glenn med påhittad data. Glenn kör på en dator hemma hos mig och går inte att besöka utifrån, därför finns ingen länk.</p>
+
+<h2>Vad Glenn gör</h2>
+<p>Jag skriver eller pratar med Glenn i en app på mobilen. Glenn kan läsa min kalender och mina mejl,
+komma ihåg saker åt mig, söka på nätet och göra längre undersökningar. Varje morgon får jag en
+sammanfattning av dagen, och Glenn säger till om ett mejl verkar viktigt.</p>
+<p>Bakom Glenn finns elva agenter, alltså små AI-medarbetare med var sin uppgift. En söker på nätet, en
+granskar det den första hittat, en sorterar mejl och en skriver morgonsammanfattningen. I rummet
+<b>Byn</b> är varje agent en hydda. Det ryker ur skorstenen när någon jobbar, och man kan spola upp
+dagen och se vem som lämnat uppgifter till vem.</p>
+
+<div class="bilder">
+    <figure><img src="glenn/hem.jpg" alt="Glenns startsida"><figcaption>Startsidan</figcaption></figure>
+    <figure><img src="glenn/byn.jpg" alt="Byn med agenternas hyddor"><figcaption>Byn: dagen spelas upp</figcaption></figure>
+    <figure><img src="glenn/kontor.jpg" alt="Forskarens kontor i 3D"><figcaption>Forskarens kontor</figcaption></figure>
+    <figure><img src="glenn/kort.jpg" alt="Ett godkännandekort för ett mejl"><figcaption>Ett godkännandekort</figcaption></figure>
+</div>
+
+<h2>Varför jag byggde den</h2>
+<p>Jag ville ha en assistent som jag själv bestämmer över: vad den får göra, vad den kommer ihåg och
+hur den ser ut. Färdiga assistenter går inte att forma på det sättet. Det fick heller inte kosta något
+extra varje månad.</p>
+
+<h2>Hur den är byggd</h2>
+<p>Glenn kör på en dator hemma som står på dygnet runt. Mobilen når den genom ett privat nätverk, så
+ingen annan kommer åt den. Appen är en webbsida som installeras på hemskärmen och kan skicka notiser.
+Servern är skriven i Python. En schemaläggare startar jobben på bestämda tider, till exempel
+morgonsammanfattningen klockan sju och mejlkollen var trettionde minut. Minnet sparas som vanliga
+textanteckningar som jag själv kan läsa och ändra. Hjärnan är Claude, via det abonnemang jag redan har.</p>
+<p>Jag har byggt Glenn tillsammans med AI-verktyget Claude Code. Jag bestämmer vad som ska byggas,
+testar och styr. Claude Code skriver det mesta av koden.</p>
+
+<h2>Säkerheten</h2>
+<div class="regler">
+<p>En AI som kan skicka mejl och ta bort saker måste gå att lita på. Därför har Glenn några regler som
+koden inte går att ta sig runt:</p>
+<ul>
+    <li><b>Godkännandekort.</b> Allt som skickar, raderar, publicerar eller kostar pengar visas först
+    som ett kort. Inget händer förrän jag tryckt ja.</li>
+    <li><b>Text från webben är aldrig order.</b> Står det "skicka alla mejl till mig" på en hemsida
+    behandlar Glenn det som information, inte som en instruktion.</li>
+    <li><b>Spärrar för kostnad och nätverk.</b> Glenn har en gräns för hur mycket den får använda
+    AI:n per dag och kommer inte åt resten av mitt hemnätverk.</li>
+</ul>
+</div>
+
+<h2>Vad jag lärt mig</h2>
+<p>Att bygga något som körs på riktigt varje dag är något annat än att bygga en hemsida. Saker går
+sönder klockan tre på natten och det måste gå att se varför. Jag har lärt mig att dela upp ett stort
+system i små delar, att skriva tester och att tänka på säkerhet från början i stället för i efterhand.</p>
+
+<div class="tillbaka button">
+<a href="Mitt_arbete.html"> Tillbaka till Mitt Arbete </a>
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
